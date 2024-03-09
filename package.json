@@ -14,7 +14,7 @@
     "prettier": "prettier --write .",
     "lint": "npx eslint && npx prettier",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "postbuild": "next-sitemap && npx prisma generate",
+    "postbuild": "npx prisma generate",
     "postinstall": "npx prisma generate"
   },
   "lint-staged": {
