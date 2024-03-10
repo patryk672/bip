@@ -21,7 +21,7 @@ import Link from 'next/link';
 
 import type { ChildrenProps } from '@/types';
 
-import ListItems from './listItems';
+import ListItems from './ListItems';
 
 function Copyright(props: any) {
   return (
