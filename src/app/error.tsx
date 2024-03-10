@@ -10,10 +10,10 @@ interface ErrorStateProps {
 const Error: React.FC<ErrorStateProps> = ({ error, reset }) => {
   return (
     <EmptyState
-      title="Uh No!! There was a problem."
-      subtitle={error.message || 'Something went wrong.'}
+      title="Strona nie została odnaleziona."
+      subtitle={error.message || 'Coś poszło nie tak. Spróbuj ponownie.'}
       showReset
-      label="Try again"
+      label="Spróbuj ponownie"
       reset={reset}
     />
   );

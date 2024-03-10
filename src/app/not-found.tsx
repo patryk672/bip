@@ -19,7 +19,7 @@ const NotFound: React.FC<NotFoundStateProps> = ({ error }) => {
       title="Uh No"
       subtitle="Could not find requested resource"
       showReset
-      label="Go back home"
+      label="Powrót"
     />
   );
 };

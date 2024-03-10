@@ -19,7 +19,7 @@ const UnauthorizeState: React.FC<UnauthorizeStateProps> = ({ error }) => {
       title="Uh No"
       subtitle="You don't have permission for this resource"
       showReset
-      label="Go back home"
+      label="Powrót"
     />
   );
 };

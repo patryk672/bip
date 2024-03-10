@@ -46,7 +46,7 @@ const EmptyState: React.FC<EmptyStateProps> = ({
             onClick={() => reset && reset()}
           />
         )}
-        <Button outline label="Go Back" onClick={() => router.push('/')} />
+        <Button outline label="Powrót" onClick={() => router.push('/')} />
       </div>
     </div>
   );
