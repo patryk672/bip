@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 
 import type { ChildrenProps } from '@/types';
 import Dashboard from '@/components/Dashboard/Dashboard';
+import MainFooter from "@/components/Footer";
+import * as React from "react";
 
 export const metadata = {
   description:
