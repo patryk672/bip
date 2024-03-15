@@ -20,22 +20,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Link from 'next/link';
 
 import type { ChildrenProps } from '@/types';
-
+import MainFooter from '@/components/Footer';
 import ListItems from './ListItems';
-
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'BIP © '}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
 
 const drawerWidth: number = 240;
 
@@ -162,6 +148,8 @@ export default function Dashboard({ children }: ChildrenProps) {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
+            display: 'grid',
+            gridTemplateRows: 'auto 1fr auto',
           }}
         >
           <Toolbar />
@@ -186,8 +174,8 @@ export default function Dashboard({ children }: ChildrenProps) {
                 </Paper>
               </Grid>
             </Grid>
-            <Copyright sx={{ pt: 4 }} />
           </Container>
+          <MainFooter />
         </Box>
       </Box>
     </ThemeProvider>

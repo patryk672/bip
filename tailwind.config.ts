@@ -17,8 +17,8 @@ const config: Config = {
       },
       colors: {
         brand: {
-          accent: '#5AD769',
-          main: '#324BC3',
+          accent: '#000000',
+          main: '#1976d2',
         },
         text: {
           primary: '#0C0F19',
