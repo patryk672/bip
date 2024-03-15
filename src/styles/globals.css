@@ -42,6 +42,7 @@ button,
 textarea,
 select {
   font: inherit;
+  outline: none !important;
 }
 
 p,
@@ -58,4 +59,13 @@ h6 {
 #__next {
   isolation: isolate;
   height: 100%;
+}
+
+.required {
+  &:after {
+    display: inline-block;
+    margin-inline-start: .25rem;
+    color: theme('colors.red.600');
+    content: '*';
+  }
 }
