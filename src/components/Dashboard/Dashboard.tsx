@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -18,9 +18,12 @@ import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Link from 'next/link';
+import clsx from 'clsx';
 
-import type { ChildrenProps } from '@/types';
 import MainFooter from '@/components/Footer';
+import { defaultTheme, darkTheme } from '@/lib/theme';
+import type { ChildrenProps } from '@/types';
+
 import ListItems from './ListItems';
 
 const drawerWidth: number = 240;
@@ -73,17 +76,37 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
 export default function Dashboard({ children }: ChildrenProps) {
   const [open, setOpen] = React.useState(true);
+  const [theme, setTheme] = React.useState(defaultTheme);
+  const [fontSize, setFontSize] = React.useState(16);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
+  const isDarkMode = theme.palette.mode === 'dark';
+  const mainContentClass = isDarkMode ? 'theme-dark' : 'theme-light';
+
+  const handleSwitchTheme = () => {
+    setTheme(theme.palette.mode === 'light' ? darkTheme : defaultTheme);
+  };
+
+  const handleFontSize = (size: number) => {
+    const root = document.querySelector('html');
+    if (root) {
+      root.style.fontSize = `${size}px`;
+      setFontSize(size);
+    }
+  };
+
+  const fontSizeClasses = (size: number) =>
+    clsx(
+      fontSize === size && 'text-white bg-black pointer-events-none',
+      'flex px-4 item-center text-primary rounded-none hover:bg-blue-100 h-[64px]'
+    );
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -115,9 +138,65 @@ export default function Dashboard({ children }: ChildrenProps) {
               {' '}
               <Link href="/">BIP</Link>
             </Typography>
-            <IconButton color="inherit">a11y</IconButton>
-            <IconButton color="inherit">a11y</IconButton>
-            <IconButton color="inherit">a11y</IconButton>
+            <div className="bg-white flex items-center">
+              <IconButton
+                className="h-[64px] text-sm px-4 flex gap-2 item-center rounded-none hover:bg-blue-100"
+                onClick={() => {
+                  handleSwitchTheme();
+                }}
+              >
+                <svg
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 32 32"
+                >
+                  <title>contrast</title>
+                  <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM4 16c0-6.627 5.373-12 12-12v24c-6.627 0-12-5.373-12-12z" />
+                </svg>
+
+                <span className="block text-primary">
+                  {isDarkMode ? 'Normalny kontrast' : 'Większy kontrast'}
+                </span>
+              </IconButton>
+            </div>
+            <div className="h-[64px] bg-white flex items-center justify-center pr-4">
+              <IconButton
+                tabIndex={fontSize === 16 ? -1 : 0}
+                className={fontSizeClasses(16)}
+                onClick={() => {
+                  handleFontSize(16);
+                }}
+              >
+                <span className="block" style={{ fontSize: `${20}px` }}>
+                  A
+                </span>
+              </IconButton>
+              <IconButton
+                tabIndex={fontSize === 20 ? -1 : 0}
+                className={fontSizeClasses(20)}
+                onClick={() => {
+                  handleFontSize(20);
+                }}
+              >
+                <span className="block text-lg" style={{ fontSize: `${26}px` }}>
+                  A
+                </span>
+              </IconButton>
+              <IconButton
+                tabIndex={fontSize === 24 ? -1 : 0}
+                className={fontSizeClasses(24)}
+                onClick={() => {
+                  handleFontSize(24);
+                }}
+              >
+                <span className="block text-xl" style={{ fontSize: `${30}px` }}>
+                  A
+                </span>
+              </IconButton>
+              <span className="text-primary text-sm px-1">Rozmiar tekstu</span>
+            </div>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -151,6 +230,7 @@ export default function Dashboard({ children }: ChildrenProps) {
             display: 'grid',
             gridTemplateRows: 'auto 1fr auto',
           }}
+          className={mainContentClass}
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
