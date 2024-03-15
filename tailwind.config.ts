@@ -19,6 +19,7 @@ const config: Config = {
         brand: {
           accent: '#000000',
           main: '#1976d2',
+          contrast: '#FFFF00',
         },
         text: {
           primary: '#0C0F19',
@@ -26,6 +27,7 @@ const config: Config = {
         },
         background: {
           primary: '#FFFFFF',
+          dark: '#121212',
         },
       },
       fontFamily: {

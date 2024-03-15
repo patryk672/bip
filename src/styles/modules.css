@@ -1,0 +1,37 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  .theme-light {
+    label {
+      color: theme('colors.text.primary');
+    }
+
+    button {
+      background-color: theme('colors.brand.main');
+    }
+  }
+
+  .theme-dark {
+    label {
+      color: theme('colors.brand.contrast');
+    }
+
+    button {
+      background-color: theme('colors.brand.contrast');
+      color: theme('colors.text.secondary');
+    }
+
+    input[type="text"], input[type="email"], select{
+      color: theme('colors.text.primary');
+    }
+  }
+}
+
+
+@layer utilities {
+  .text-primary {
+    color: theme('colors.text.primary');
+  }
+}

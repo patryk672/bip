@@ -1,4 +1,5 @@
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 import * as React from 'react';
 import Link from 'next/link';
 
@@ -64,125 +65,108 @@ const NAVIGATION = {
   ],
 };
 
-function Copyright(props: any) {
+function Copyright() {
   return (
-    <Typography variant="body2" color="white" align="center" {...props}>
+    <div>
       {'BIP © '}
       {new Date().getFullYear()}.
-    </Typography>
+    </div>
   );
 }
 
 export default function MainFooter() {
+  const theme = useTheme();
+  const { palette } = theme;
+  const isDarkTheme = palette.mode === 'dark';
+  const color = isDarkTheme ? palette.text.primary : palette.text.secondary;
   return (
-    <footer className="bg-gray-900" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
-            <div className="text-white text-3xl font-bold font-poppins">
-              BIP
-            </div>
-            <p className="text-sm leading-6 text-gray-300">
-              Making the world a better place through constructing elegant
-              hierarchies.
-            </p>
-            <div className="flex space-x-6">
-              {NAVIGATION.social.map(item => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-500 hover:text-gray-400"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  <div className="h-6 w-6">
-                    <item.icon aria-hidden="true" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Nasza działalność
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {NAVIGATION.info.map(item => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Wiadomości
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {NAVIGATION.news.map(item => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+    <Typography style={{ color }} component="div">
+      <footer className="bg-gray-900" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" className="sr-only">
+          Footer
+        </h2>
+        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+          <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+            <div className="space-y-8">
+              <div className="text-3xl font-bold font-poppins">BIP</div>
+              <p className="text-sm leading-6">
+                Portal BIP (Biuletyn Informacji Publicznej) jest oficjalnym źródłem informacji publicznej w Polsce. Został utworzony w celu zapewnienia obywatelom dostępu do informacji o działalności organów władzy publicznej oraz innych podmiotów wykonujących zadania publiczne.
+              </p>
+              <div className="flex space-x-6">
+                {NAVIGATION.social.map(item => (
+                  <Link key={item.name} href={item.href}>
+                    <span className="sr-only">{item.name}</span>
+                    <div className="h-6 w-6">
+                      <item.icon aria-hidden="true" />
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Wsparcie
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {NAVIGATION.support.map(item => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+              <div className="md:grid md:grid-cols-2 md:gap-8">
+                <div>
+                  <h3 className="text-sm font-semibold leading-6">
+                    Nasza działalność
+                  </h3>
+                  <ul className="mt-6 space-y-4">
+                    {NAVIGATION.info.map(item => (
+                      <li key={item.name}>
+                        <Link href={item.href} className="text-sm leading-6">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-10 md:mt-0">
+                  <h3 className="text-sm font-semibold leading-6">
+                    Wiadomości
+                  </h3>
+                  <ul className="mt-6 space-y-4">
+                    {NAVIGATION.news.map(item => (
+                      <li key={item.name}>
+                        <Link href={item.href} className="text-sm leading-6">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">
-                  Pomoc
-                </h3>
-                <ul className="mt-6 space-y-4">
-                  {NAVIGATION.resources.map(item => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="text-sm leading-6 text-gray-300 hover:text-white"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="md:grid md:grid-cols-2 md:gap-8">
+                <div>
+                  <h3 className="text-sm font-semibold leading-6">Wsparcie</h3>
+                  <ul className="mt-6 space-y-4">
+                    {NAVIGATION.support.map(item => (
+                      <li key={item.name}>
+                        <Link href={item.href} className="text-sm leading-6">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="mt-10 md:mt-0">
+                  <h3 className="text-sm font-semibold leading-6">Pomoc</h3>
+                  <ul className="mt-6 space-y-4">
+                    {NAVIGATION.resources.map(item => (
+                      <li key={item.name}>
+                        <Link href={item.href} className="text-sm leading-6">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
+          <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+            <Copyright />
+          </div>
         </div>
-        <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <Copyright />
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </Typography>
   );
 }
