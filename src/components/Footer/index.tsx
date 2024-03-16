@@ -5,26 +5,26 @@ import Link from 'next/link';
 
 const NAVIGATION = {
   info: [
-    { name: 'O nas', href: '#' },
-    { name: 'Oferty pracy', href: '#' },
-    { name: 'Prasa', href: '#' },
-    { name: 'Partnerzy', href: '#' },
-    { name: 'Kontakt', href: '/contact' }, // Dodany link do strony Kontakt
+    { name: 'O nas', href: '/o-nas' },
+    { name: 'Oferty pracy', href: '/oferty-pracy' },
+    { name: 'Prasa', href: '/prasa' },
+    { name: 'Partnerzy', href: '/partnerzy' },
+    { name: 'Kontakt', href: '/kontakt' },
   ],
   news: [
-    { name: 'Najnowsze wiadomości', href: '#' },
-    { name: 'Komunikaty prasowe', href: '#' },
-    { name: 'Blog', href: '#' },
+    { name: 'Najnowsze wiadomości', href: '/najnowsze-wiadomosci' },
+    { name: 'Komunikaty prasowe', href: '/komunikaty-prasowe' },
+    { name: 'Blog', href: '/blog' },
   ],
   resources: [
-    { name: 'Dokumenty', href: '#' },
-    { name: 'Poradniki', href: '#' },
-    { name: 'FAQ', href: '#' },
+    { name: 'Dokumenty', href: '/dokumenty' },
+    { name: 'Poradniki', href: '/poradniki' },
+    { name: 'FAQ', href: '/faq' },
   ],
   support: [
-    { name: 'Centrum pomocy', href: '#' },
-    { name: 'Wsparcie techniczne', href: '#' },
-    { name: 'Zgłoś problem', href: '#' },
+    { name: 'Centrum pomocy', href: '/centrum-pomocy' },
+    { name: 'Wsparcie techniczne', href: '/wsparcie-techniczne' },
+    { name: 'Zgłoś problem', href: '/zgłos-problem' },
   ],
   social: [
     {
