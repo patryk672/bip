@@ -33,6 +33,7 @@ module.exports = {
   ],
   root: true,
   rules: {
+    'no-shadow': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
