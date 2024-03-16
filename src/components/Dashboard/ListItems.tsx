@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ListItemButton, ListItemText } from '@mui/material';
 
-import { data } from '@/data';
+import { data } from '@/data/data';
 
 export default function ListItems() {
   return data.map(item => (

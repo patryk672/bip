@@ -1,4 +1,4 @@
-import { data } from '@/data';
+import { data } from '@/data/data';
 import Node from '@/components/Node/Node';
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -9,7 +9,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <Node>
       <Node.Title>{content.title}</Node.Title>
-      <p className="text-lg">{content.content}</p>
+      <p className="text-lg mt-5">{content.content}</p>
     </Node>
   );
 }
