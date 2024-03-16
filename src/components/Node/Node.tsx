@@ -1,4 +1,4 @@
-import { ChildrenProps } from "@/types";
+import type { ChildrenProps } from '@/types';
 
 function Title({ children }: ChildrenProps) {
   return <h1 className="text-3xl font-bold font-poppins">{children}</h1>;

@@ -1,11 +1,11 @@
 import '@/styles/globals.css';
 
 import { Inter } from 'next/font/google';
+import * as React from 'react';
 
 import type { ChildrenProps } from '@/types';
 import Dashboard from '@/components/Dashboard/Dashboard';
-import MainFooter from "@/components/Footer";
-import * as React from "react";
+// import MainFooter from '@/components/Footer';
 
 export const metadata = {
   description:

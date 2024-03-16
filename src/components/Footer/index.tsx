@@ -90,7 +90,11 @@ export default function MainFooter() {
             <div className="space-y-8">
               <div className="text-3xl font-bold font-poppins">BIP</div>
               <p className="text-sm leading-6">
-                Portal BIP (Biuletyn Informacji Publicznej) jest oficjalnym źródłem informacji publicznej w Polsce. Został utworzony w celu zapewnienia obywatelom dostępu do informacji o działalności organów władzy publicznej oraz innych podmiotów wykonujących zadania publiczne.
+                Portal BIP (Biuletyn Informacji Publicznej) jest oficjalnym
+                źródłem informacji publicznej w Polsce. Został utworzony w celu
+                zapewnienia obywatelom dostępu do informacji o działalności
+                organów władzy publicznej oraz innych podmiotów wykonujących
+                zadania publiczne.
               </p>
               <div className="flex space-x-6">
                 {NAVIGATION.social.map(item => (
