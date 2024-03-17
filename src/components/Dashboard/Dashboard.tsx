@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useEffect } from 'react';
 import { styled, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,7 +22,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import MainFooter from '@/components/Footer';
-import { defaultTheme, darkTheme } from '@/lib/theme';
+import { darkTheme, defaultTheme } from '@/lib/theme';
 import type { ChildrenProps } from '@/types';
 
 import ListItems from './ListItems';
@@ -89,7 +90,24 @@ export default function Dashboard({ children }: ChildrenProps) {
 
   const handleSwitchTheme = () => {
     setTheme(theme.palette.mode === 'light' ? darkTheme : defaultTheme);
+    window.location.hash = theme.palette.mode === 'light' ? 'dark' : 'light';
   };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const themeMode = window.location.hash.substring(1);
+      if (themeMode === 'light' || themeMode === 'dark') {
+        setTheme(themeMode === 'light' ? defaultTheme : darkTheme);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   const handleFontSize = (size: number) => {
     const root = document.querySelector('html');
