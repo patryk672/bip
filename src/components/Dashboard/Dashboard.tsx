@@ -96,8 +96,16 @@ export default function Dashboard({ children }: ChildrenProps) {
   useEffect(() => {
     const handleHashChange = () => {
       const themeMode = window.location.hash.substring(1);
-      if (themeMode === 'light' || themeMode === 'dark') {
-        setTheme(themeMode === 'light' ? defaultTheme : darkTheme);
+      if (
+        themeMode === 'light' ||
+        themeMode === 'dark' ||
+        themeMode === 'footer'
+      ) {
+        setTheme(
+          themeMode === 'light' || themeMode !== 'footer'
+            ? defaultTheme
+            : darkTheme
+        );
       }
     };
     handleHashChange();

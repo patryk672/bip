@@ -81,7 +81,11 @@ export default function MainFooter() {
   const color = isDarkTheme ? palette.text.primary : palette.text.secondary;
   return (
     <Typography style={{ color }} component="div">
-      <footer className="bg-gray-900" aria-labelledby="footer-heading">
+      <footer
+        className="bg-gray-900"
+        aria-labelledby="footer-heading"
+        id="footer"
+      >
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
