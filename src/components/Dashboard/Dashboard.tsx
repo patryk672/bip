@@ -102,12 +102,13 @@ export default function Dashboard({ children }: ChildrenProps) {
         themeMode === 'footer'
       ) {
         setTheme(
-          themeMode === 'light' || themeMode !== 'footer'
-            ? defaultTheme
-            : darkTheme
+          themeMode === 'dark' || themeMode === 'footer'
+            ? darkTheme
+            : defaultTheme
         );
       }
     };
+
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
 
