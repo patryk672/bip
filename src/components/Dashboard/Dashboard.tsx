@@ -100,7 +100,7 @@ export default function Dashboard({ children }: ChildrenProps) {
         setTheme(themeMode === 'light' ? defaultTheme : darkTheme);
       }
     };
-
+    handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
 
     // Clean up the event listener when the component unmounts
